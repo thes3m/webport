@@ -13,7 +13,7 @@
 		C7DDDAB322647FEB00208E21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDDAB122647FEB00208E21 /* LaunchScreen.storyboard */; };
 		C7DDDABE22647FEB00208E21 /* webportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDDABD22647FEB00208E21 /* webportUITests.swift */; };
 		C7DDDADF2264952700208E21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDDADE2264952700208E21 /* Main.storyboard */; };
-		C7DDDAE12264AC2700208E21 /* build in Resources */ = {isa = PBXBuildFile; fileRef = C7DDDAE02264AC2700208E21 /* build */; };
+		C7DDDAE52265CE6F00208E21 /* build in Resources */ = {isa = PBXBuildFile; fileRef = C7DDDAE42265CE6F00208E21 /* build */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,7 @@
 		C7DDDABD22647FEB00208E21 /* webportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webportUITests.swift; sourceTree = "<group>"; };
 		C7DDDABF22647FEB00208E21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7DDDADE2264952700208E21 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		C7DDDAE02264AC2700208E21 /* build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = build; path = ../../../build; sourceTree = "<group>"; };
+		C7DDDAE42265CE6F00208E21 /* build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = build; path = ../../build; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 		C7DDDAA722647FE900208E21 /* webport */ = {
 			isa = PBXGroup;
 			children = (
-				C7DDDAE02264AC2700208E21 /* build */,
+				C7DDDAE42265CE6F00208E21 /* build */,
 				C7DDDAA822647FE900208E21 /* AppDelegate.swift */,
 				C7DDDAAA22647FE900208E21 /* WebPortController.swift */,
 				C7DDDAAF22647FEB00208E21 /* Assets.xcassets */,
@@ -180,8 +180,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7DDDAE52265CE6F00208E21 /* build in Resources */,
 				C7DDDAB322647FEB00208E21 /* LaunchScreen.storyboard in Resources */,
-				C7DDDAE12264AC2700208E21 /* build in Resources */,
 				C7DDDAB022647FEB00208E21 /* Assets.xcassets in Resources */,
 				C7DDDADF2264952700208E21 /* Main.storyboard in Resources */,
 			);
@@ -359,6 +359,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PD2H64ZG9A;
 				INFOPLIST_FILE = webport/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -377,6 +378,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PD2H64ZG9A;
 				INFOPLIST_FILE = webport/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
