@@ -8,7 +8,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "run-android": "ng build && ../build-scripts/run-android",
+    "run-ios": "ng build && ../build-scripts/run-ios",
+    "build-android": "ng build && ../build-scripts/build-android",
+    "build-ios": "ng build && ../build-scripts/build-ios"
   },
   "private": true,
   "dependencies": {

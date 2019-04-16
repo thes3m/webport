@@ -1,0 +1,13 @@
+ANDROID_PROJECT_DIR="../android" #Android project directory
+OUTPUT_DIR="../output" #output folder for apk relative to ANDROID_PROJECT_DIR
+
+#Create variables
+OUTPUT_APK_PATH="$OUTPUT_DIR/android.apk"
+PACKAGE_NAME=`awk -v FS='"' '/package=/{print $2}' ../android/app/src/main/AndroidManifest.xml`
+
+#Move to android folder and build the project
+cd $ANDROID_PROJECT_DIR
+./gradlew installDebug
+
+#Run application on device
+adb shell monkey -p $PACKAGE_NAME -c android.intent.category.LAUNCHER 1
