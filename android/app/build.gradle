@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     sourceSets {
-        main.assets.srcDirs += '../../build'
+        main.assets.srcDirs += '../../build' //Folder that contains web assets
     }
     defaultConfig {
         applicationId "si.razum.webport"

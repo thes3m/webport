@@ -9,10 +9,13 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "run-android": "ng build && ../build-scripts/run-android",
-    "run-ios": "ng build && ../build-scripts/run-ios",
-    "build-android": "ng build && ../build-scripts/build-android",
-    "build-ios": "ng build && ../build-scripts/build-ios"
+    "dev-web": "ng serve -lr --host 0.0.0.0",
+    "dev-android": "concurrently \"npm:dev-web\"  \"../build-scripts/webport.py --platform android --run --usewebserver\"",
+    "build-android": "ng build && ../build-scripts/webport.py --platform android",
+    "deploy-android": "ng build && ../build-scripts/webport.py --platform android",
+    "dev-ios": "concurrently \"npm:dev-web\" \"../build-scripts/webport.py --platform ios --run --usewebserver\"",
+    "build-ios": "ng build && ../build-scripts/webport.py --platform ios",
+    "deploy-ios": "ng build && ../build-scripts/webport.py --platform ios --run"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +28,7 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "concurrently": "^4.1.0",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"

@@ -6,6 +6,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class WebPortActivity extends AppCompatActivity {
     private String firstHTMLFileName = "index.html";
     private WebView webview;
@@ -24,8 +28,38 @@ public class WebPortActivity extends AppCompatActivity {
         settings.setJavaScriptEnabled(true);
         webview.setWebViewClient(webViewClient);
 
-        //Open assets file
-        webview.loadUrl("file:///android_asset/" + firstHTMLFileName);
+        String webserverAddress = GetWebServerAddress();
+        if (webserverAddress != null) {
+            System.out.print("Opening webserver page:" + webserverAddress);
+            webview.loadUrl(webserverAddress);
+        }else{
+            //Open assets file
+            System.out.print("Opening local " + firstHTMLFileName + " file.");
+            webview.loadUrl("file:///android_asset/" + firstHTMLFileName);
+        }
+    }
+
+    private String GetWebServerAddress(){
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new InputStreamReader(getAssets().open("webserver"), "UTF-8"));
+
+            String webserverAddress = reader.readLine();
+            // do reading, usually loop until end of file reading
+            reader.close();
+            return  webserverAddress.length() > 5 ? webserverAddress : null;
+        } catch (IOException e) {
+            //log the exception
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    //log the exception
+                }
+            }
+        }
+        return null;
     }
 
     @Override
