@@ -20,13 +20,6 @@
 	<string></string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoadsInWebContent</key>
-		<true/>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 </dict>

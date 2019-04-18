@@ -20,7 +20,6 @@
             "outputPath": "build",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "baseHref" : "./",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [

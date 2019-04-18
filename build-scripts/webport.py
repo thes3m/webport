@@ -39,7 +39,7 @@ def get_ip():
         s.close()
     return IP
 
-# Method runs a commandline script and returns the output
+# Method runs a commandline script and returns the status code
 def run_cmd(command):
     output = None
     if args.verbose:
@@ -51,7 +51,7 @@ def run_cmd(command):
 
     return output
 
-# Go to current script folder dir
+# move to this script folder
 os.chdir(SCRIPT_DIR)
 
 #Variables
@@ -98,7 +98,7 @@ if args.platform == "ios": # iOS
         shutil.rmtree(OUTPUT_ARCHIVE_PATH)
         
     # Create xcode build build
-    run_cmd("xcodebuild -project ./webport.xcodeproj -scheme webport -configuration Debug archive -archivePath "+ OUTPUT_ARCHIVE_PATH)
+    run_cmd("xcodebuild -workspace ./webport.xcworkspace -scheme webport -configuration Debug archive -archivePath "+ OUTPUT_ARCHIVE_PATH)
     # Log into console weather the build was successful or not
     if os.path.exists(OUTPUT_ARCHIVE_PATH):
         print("\nBuild SUCCESSFUL.\n")
