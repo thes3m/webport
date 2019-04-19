@@ -8,13 +8,13 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev-web": "ng serve --host 0.0.0.0",
+    "dev-web": "npm run serve --host 0.0.0.0",
     "dev-android": "concurrently \"npm:dev-web\"  \"../build-scripts/webport.py --verbose --platform android --run --useWebserver\"",
-    "build-android": "ng build && ../build-scripts/webport.py --verbose --platform android",
-    "deploy-android": "ng build && ../build-scripts/webport.py --verbose --platform android",
+    "build-android": "npm run build && ../build-scripts/webport.py --verbose --platform android",
+    "deploy-android": "npm run build && ../build-scripts/webport.py --verbose --platform android",
     "dev-ios": "concurrently \"npm:dev-web\" \"../build-scripts/webport.py --platform ios --run --verbose --useWebserver\"",
-    "build-ios": "ng build && ../build-scripts/webport.py --platform ios --verbose",
-    "deploy-ios": "ng build && ../build-scripts/webport.py --platform ios --run --verbose"
+    "build-ios": "npm run build && ../build-scripts/webport.py --platform ios --verbose",
+    "deploy-ios": "npm run build && ../build-scripts/webport.py --platform ios --run --verbose"
   },
   "private": true,
   "dependencies": {
