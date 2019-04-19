@@ -20,7 +20,9 @@ FNULL = open(os.devnull, 'w')
 arg_parser = argparse.ArgumentParser(description="Build an iOS project and embeds a web app project inside it. By default an app will have a webapp embeded and an .ipa will be generated as a result of build process. However you can specify different arguments to deploy to device or to connect to local webserver")
 arg_parser.add_argument('--platform', help='Platform to build for - android or ios')
 arg_parser.add_argument('--run', action='store_true', help='if specified application will be deployed and runned on currently attached device otherwise a ipa will be build')
-arg_parser.add_argument('--usewebserver', action='store_true', help='if specified then app will open webpage from local webserver')
+arg_parser.add_argument('--useWebserver', action='store_true', help='if specified then app will open webpage from local webserver')
+arg_parser.add_argument('--devServerAddress', help='Address for webserver (eg.:http://192.168.1.200)')
+arg_parser.add_argument('--port', help='Port for dev webserver that we should use')
 arg_parser.add_argument('--verbose', action='store_true', help='adds additional logging to console')
 
 # Parse commandline arguments
@@ -56,15 +58,15 @@ os.chdir(SCRIPT_DIR)
 
 #Variables
 DEPLOY_AND_RUN = args.run # Weather to deploy app on device (if false the ipa will be generated)
-USE_WEBSERVER = args.usewebserver # Weather to connect app to local webserver or use source files instead
+USE_WEBSERVER = args.useWebserver # Weather to connect app to local webserver or use source files instead
 EXPORT_OPTIONS_PLIST_PATH = "exportOptions.plist"
 OUTPUT_ARCHIVE_PATH = OUTPUT_DIR+"/webport.xcarchive"
 OUTPUT_IPA_PATH = OUTPUT_DIR+"/webport.ipa"
 ARCHIVE_APP_PATH = OUTPUT_DIR+"/webport.xcarchive/Products/Applications/webport.app"
 OUTPUT_APK_PATH = OUTPUT_DIR + "/android.apk"
 IP_ADDRESS_FILE_PATH = BUILD_DIR+"/webserver"
-DEV_WEBSERVER_PORT = 4200
-DEV_WEBSERVER_IP_ADDRESS = get_ip()
+DEV_WEBSERVER_PORT = args.port if args.port != None else 4200
+DEV_WEBSERVER_IP_ADDRESS = args.devServerAddress if args.devServerAddress != None else "http://" + get_ip()
 
 # Clean build directory
 if os.path.exists(BUILD_DIR):
@@ -77,7 +79,7 @@ if USE_WEBSERVER == True:
         os.makedirs(BUILD_DIR)
 
     # Write a file that will contain a server address
-    server_address = "http://" + DEV_WEBSERVER_IP_ADDRESS + ":" + str(DEV_WEBSERVER_PORT)
+    server_address = DEV_WEBSERVER_IP_ADDRESS + ":" + str(DEV_WEBSERVER_PORT)
     f = open(IP_ADDRESS_FILE_PATH, "w")
     f.write(server_address)
     f.close()
