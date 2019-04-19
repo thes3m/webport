@@ -20,8 +20,6 @@ class WebPortController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         super.viewDidLoad()
         
-        setLocalHttpServer()
-        
         let config = WKWebViewConfiguration()
         config.preferences.javaScriptEnabled = true
         config.preferences.javaScriptCanOpenWindowsAutomatically = true
@@ -30,12 +28,15 @@ class WebPortController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         webview = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height),configuration:config)
         webview.navigationDelegate = self
         webview.uiDelegate = self
+        webview.scrollView.isScrollEnabled = false
         self.view.addSubview(webview)
         
         if let devServerAddress = getDevServerAddress() { // Try get dev server address and if exists load it
             print("Loading page from dev server:\(devServerAddress)")
             webview.load(URLRequest(url: devServerAddress))
         }else if Bundle.main.path(forResource:"index", ofType:"html", inDirectory:webSrcDir) != nil{ //Load index html that is bundles with app
+            setLocalHttpServer()
+            
             print("Loading local index.html file.")
             let indexFileUrl = URL(string: "http://localhost:8080/index.html")!
             webview.load(URLRequest(url: indexFileUrl))
