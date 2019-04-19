@@ -13,7 +13,7 @@ ANDROID_PROJECT_DIR = "../android" #Android project directory relative to this s
 ANDROID_MANIFEST_PATH = "../android/app/src/main/AndroidManifest.xml" # Android manifest location relative to ANDROID_PROJECT_DIR
 OUTPUT_DIR = "../output" #Output directory relative to XCODE_PROJECT_DIR
 BUILD_DIR = "../build"
-WEB_SRC_DIR = "../web/build"
+WEB_SRC_DIR = "../web/www" #A directory where final sources for app are
 FNULL = open(os.devnull, 'w')
 
 # Setupt commandline argument parser

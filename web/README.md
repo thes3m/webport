@@ -1,27 +1,59 @@
-# Webport
+# WebPort
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+## Framework7 CLI Options
 
-## Development server
+Framework7 app created with following options:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```
+{
+  "cwd": "/Users/samopajk/Documents/Projects/WebPort/f7",
+  "type": [
+    "web",
+    "pwa"
+  ],
+  "name": "WebPort",
+  "framework": "react",
+  "template": "split-view",
+  "cssPreProcessor": false,
+  "customColor": true,
+  "color": "FB8309",
+  "iconFonts": true,
+  "bundler": "webpack"
+}
+```
 
-## Code scaffolding
+## NPM Scripts
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* `npm start` - run development server
+* `npm run build-prod` - build web app for production
+* `npm run build-dev` - build web app using development mode (faster build without minification and optimization)
 
-## Build
+## PWA
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+This is a PWA. Don't forget to check what is inside of your `service-worker.js`. It is also recommended that you disable service worker (or enable "Update on reload") in browser dev tools during development.
+## Assets
 
-## Running unit tests
+Assets (icons, splash screens) source images located in `assets-src` folder. To generate your own icons and splash screen images, you will need to replace all assets in this directory with your own images (pay attention to image size and format), and run the following command in the project directory:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+framework7 generate-assets
+```
 
-## Running end-to-end tests
+Or launch UI where you will be able to change icons and splash screens:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+framework7 generate-assets --ui
+```
 
-## Further help
+## Documentation & Resources
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* [Framework7 Core Documentation](https://framework7.io/docs/)
+
+* [Framework7 React Documentation](https://framework7.io/react/)
+* [Framework7 Icons Reference](https://framework7.io/icons/)
+* [Community Forum](https://forum.framework7.io)
+
+## Support Framework7
+
+Love Framework7? Support project by donating or pledging on patreon:
+https://patreon.com/vladimirkharlampidi
