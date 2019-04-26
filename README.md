@@ -8,9 +8,11 @@ Compared to Cordova or PhoneGap, native projects are not generated, but are prov
 
 ## Why
 
-Webport and Cordova are similar framworks for building applicatoons however Cordova offers a number of plugins for integrating native features that do not play well with eachother all the time. For example lets say that you include `GoogleMaps` framework and `GoogleAnalytics` framwork, which both contain some shared native dependencies, but each Cordova plugin for this libraries contains a different version of the native dependencies. This issues can then be in varios ways but it takes quite some time to resolve them and when project complexity rises the number of problems will likely aswell. Another difference is that cordova generates native project while WebPort simply does not.
+Webport somehow relates to Cordova for building applicatoons however Cordova offers a number of plugins and tools for integrating native features that do not play well with eachother all the time and each plugin might need to change native projects which complicates things. For example lets say that you include `GoogleMaps` framework and `GoogleAnalytics` framwork, which both contain some shared native dependencies, but each Cordova plugin for this libraries contains a different version of the native dependencies. This issues can then be in varios ways but it takes quite some time to resolve them and when project complexity rises the number of problems will likely aswell. Another difference is that cordova generates native project while WebPort simply does not.
 
 ## How does it work
+
+WebPort is a project template that contains 2 native project (ios/android) and a starter for a web project. Both native projects contain a simple single view application that opens up Webview and initial page (index.html). Native projects take HTML/CSS/JS source code from `/build` folder and bundle it inside application. Webport allows any kind of frontend web project that might run on a webserver to be bundled inside native application. Besides native projects a python build script (`build-scripts/webport.py`) is provided that allows you to quickly build application for developement or production from commandline.
 
 ## Features
 
@@ -31,12 +33,12 @@ You can support older versions but you might have to do some additional work.
 ## Workflow
 
 * you can develop a web app as you would normally do with your preferred web stack
-* when you want to build for iOS or Android you execute a script that bundles your webcode in xcode or android project and then you build it by itself
-* base iOS project that opens up WKWebview and opens a dev webserver page or creates a local webserver to serve bundled app pages
-* base android project that opens WKWebView and opens a dev webserver page or opens up a local html file (android project does not use local webserver)
+* when you want to build for iOS or Android you execute a script that bundles your web project in Xcode or Android project and then you can run your project on a device or simulator - `npm run deploy-ios`/`npm run deploy-android`
 
 ## What is included
 
+* base iOS project that opens up WKWebview and opens a dev webserver page or creates a local webserver to serve bundled app pages
+* base android project that opens WKWebView and opens a dev webserver page or opens up a local html file (android project does not use local webserver)
 * basic Angular project template for web is generated with angular-cli
 * basic "one page" Android and iOS projects that contain a WebView that either opens a dev server page or a locally embedded html page
 * a script (build-scripts/webport.py) that is used for developing, building ,deploying on mobile apps
@@ -57,6 +59,8 @@ You can support older versions but you might have to do some additional work.
 If you wish to other framework than Angular you can simply delete contents of `web/` folder and start your webproject there from scratch. In order to build a custom project with Webport you will have to call `build-scripts/webport.py` with some arguments or you can check scripts in `web/package.json` that show how the script is used.
 
 ## How to get started
+
+Ensure that you have all dependencies and SDKs installed for building native projects. If you are building for iOS then you need Xcode and a developer account, if you develop for Android you will need Android Studio and AndroidSDK. For setting up your system you can google up some guides.
 
 First install npm dependencies:
 ```
