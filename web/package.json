@@ -12,9 +12,9 @@
     "dev-android": "concurrently \"npm:dev-web\"  \"../build-scripts/webport.py --platform android --run --usewebserver\"",
     "build-android": "ng build && ../build-scripts/webport.py --platform android",
     "deploy-android": "ng build && ../build-scripts/webport.py --platform android",
-    "dev-ios": "concurrently \"npm:dev-web\" \"../build-scripts/webport.py --platform ios --run --usewebserver\"",
-    "build-ios": "ng build && ../build-scripts/webport.py --platform ios",
-    "deploy-ios": "ng build && ../build-scripts/webport.py --platform ios --run"
+    "dev-ios": "concurrently \"npm:dev-web\" \"../build-scripts/webport.py --platform ios --run --verbose --usewebserver\"",
+    "build-ios": "ng build && ../build-scripts/webport.py --platform ios --verbose",
+    "deploy-ios": "ng build && ../build-scripts/webport.py --platform ios --run --verbose"
   },
   "private": true,
   "dependencies": {
